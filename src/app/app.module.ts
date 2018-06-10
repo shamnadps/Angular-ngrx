@@ -8,7 +8,6 @@ import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { environment } from "../environments/environment";
 import { EffectsModule } from "@ngrx/effects";
 import { AppEffects } from "./effects/app/app.effects";
-import * as fromNews from "./reducers/news.reducer";
 import { NewsEffects } from "./effects/news/news.effects";
 import { NewsComponent } from "./components/news/news.component";
 import { NewsService } from "./services/news.service";

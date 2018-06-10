@@ -1,6 +1,6 @@
 import { Action } from "@ngrx/store";
-import * as newsActions from "../actions/news.actions";
-import { News } from "../interfaces/news";
+import * as newsActions from "../../actions/news.actions";
+import { News } from "../../interfaces/news";
 
 export interface NewsState {
   news: News[];

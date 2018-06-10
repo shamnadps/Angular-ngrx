@@ -6,17 +6,17 @@ import {
   MetaReducer
 } from "@ngrx/store";
 import { environment } from "../../environments/environment";
-import * as fromNews from "./news.reducer";
-import * as fromNewsDetails from "./news.details.reducer";
+import newsReducers from "./news";
+import newsDetailReducers from "./news_details";
 
 export interface State {
-  newsState: fromNews.NewsState;
-  newsDetailsState: fromNewsDetails.NewsDetailsState;
+  newsState: newsReducers.NewsState;
+  newsDetailsState: newsDetailReducers.NewsDetailsState;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  newsState: fromNews.reducer,
-  newsDetailsState: fromNewsDetails.reducer
+  newsState: newsReducers.reducer,
+  newsDetailsState: newsDetailReducers.reducer
 };
 
 export const getNewsFeatureState = createFeatureSelector("news");
@@ -26,14 +26,14 @@ export const getNewsState = createSelector(
   (state: State) => state.newsState
 );
 
-export const getNewsIds = createSelector(getNewsState, fromNews.getNewsIds);
+export const getNewsIds = createSelector(getNewsState, newsReducers.getNewsIds);
 export const getNewsIdLoaded = createSelector(
   getNewsState,
-  fromNews.getNewsIdsLoaded
+  newsReducers.getNewsIdsLoaded
 );
 export const getNewsIdLoading = createSelector(
   getNewsState,
-  fromNews.getNewsIdsLoading
+  newsReducers.getNewsIdsLoading
 );
 
 export const getNewsDetailsFeatureState = createFeatureSelector("news-details");
@@ -45,13 +45,13 @@ export const getNewsDetailsState = createSelector(
 
 export const getNewsDetails = createSelector(
   getNewsDetailsState,
-  fromNewsDetails.getNewsDetails
+  newsDetailReducers.getNewsDetails
 );
 export const getNewsDetailsLoaded = createSelector(
   getNewsDetailsState,
-  fromNewsDetails.getNewsDetailsLoaded
+  newsDetailReducers.getNewsDetailsLoaded
 );
 export const getNewsDetailsLoading = createSelector(
   getNewsDetailsState,
-  fromNewsDetails.getNewsDetailsLoading
+  newsDetailReducers.getNewsDetailsLoading
 );

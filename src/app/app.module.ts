@@ -16,6 +16,7 @@ import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { NewsDetailsComponent } from "./components/news-details/news-details.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { NewsDetailEffects } from "./effects/news_details/news.effects";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NewsDetailEffects } from "./effects/news_details/news.effects";
     StoreModule.forFeature("news-details", reducers),
     EffectsModule.forFeature([NewsEffects]),
     EffectsModule.forFeature([NewsDetailEffects]),
-    environment.production ? [] : StoreDevtoolsModule.instrument()
+    environment.production ? [] : StoreDevtoolsModule.instrument(),
+    BrowserAnimationsModule
   ],
   providers: [NewsService],
   bootstrap: [AppComponent]

@@ -4,7 +4,7 @@
 <div *ngIf="!(newsIds$ | async)?.length">
   No news available at the moment!.
 </div>
-<ul>
+<ul [@listStagger]="(newsIds$ | async)">
   <li *ngFor="let newsId of (newsIds$ | async)">
     <p>
       <a routerLink="/details/{{newsId}}">{{newsId}}</a>

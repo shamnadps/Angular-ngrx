@@ -6,12 +6,43 @@ import { Store } from "@ngrx/store";
 import { NewsService } from "../../services/news.service";
 import * as fromReducers from "../../reducers";
 import * as fromActions from "../../actions/news.actions";
-
+import {
+  trigger,
+  style,
+  transition,
+  animate,
+  keyframes,
+  query,
+  stagger
+} from "@angular/animations";
 @Component({
   selector: "app-news",
   providers: [NewsService],
   templateUrl: "./news.component.html",
-  styleUrls: ["./news.component.scss"]
+  styleUrls: ["./news.component.scss"],
+  animations: [
+    trigger("listStagger", [
+      transition("* <=> *", [
+        query(
+          ":enter",
+          [
+            style({ opacity: 0, transform: "translateY(-15px)" }),
+            stagger(
+              "50ms",
+              animate(
+                "550ms ease-out",
+                style({ opacity: 1, transform: "translateY(0px)" })
+              )
+            )
+          ],
+          { optional: true }
+        ),
+        query(":leave", animate("50ms", style({ opacity: 0 })), {
+          optional: true
+        })
+      ])
+    ])
+  ]
 })
 export class NewsComponent implements OnInit {
   newsIds$: Observable<News[]>;

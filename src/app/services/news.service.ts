@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { News } from "../interfaces/news";
 import { NewsDetails } from "../interfaces/news_details";
+import { LoadNewsDetails } from "../actions/news.actions";
 
 @Injectable()
 export class NewsService {
@@ -15,9 +16,11 @@ export class NewsService {
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 
-  getNewsDetails(): Observable<NewsDetails[]> {
+  getNewsDetails(action): Observable<NewsDetails[]> {
     return this.http
-      .get<News[]>(`https://hacker-news.firebaseio.com/v0/item/123.json`)
+      .get<NewsDetails[]>(
+        `https://hacker-news.firebaseio.com/v0/item/${action.payload}.json`
+      )
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 }

@@ -26,7 +26,7 @@ export class LoadNewsIdFailed implements Action {
 }
 export class LoadNewsDetails implements Action {
   readonly type = NewsActionTypes.LoadNewsDetails;
-  constructor(public newsId: number) {}
+  constructor(public payload: any) {}
 }
 
 export class LoadNewsDetailsSuccess implements Action {

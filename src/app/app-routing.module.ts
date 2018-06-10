@@ -11,10 +11,6 @@ const routes: Routes = [
   {
     path: "details/:id",
     component: NewsDetailsComponent
-  },
-  {
-    path: "news",
-    component: NewsComponent
   }
 ];
 

@@ -12,8 +12,8 @@ export class NewsDetailEffects {
   effect$ = this.actions$
     .ofType(newsActions.NewsActionTypes.LoadNewsDetails)
     .pipe(
-      switchMap(() => {
-        return this.newsService.getNewsDetails().pipe(
+      switchMap(action => {
+        return this.newsService.getNewsDetails(action).pipe(
           map(newsIds => new newsActions.LoadNewsDetailsSuccess(newsIds)),
           catchError(error => of(new newsActions.LoadNewsDetailsFailed(error)))
         );

@@ -1,4 +1,24 @@
 <h2>
-  news-details works!
+  News Details
 </h2>
-<div *ngIf="!(newsDetails$ | async)?.length">No news details available yet!</div>
+<div *ngIf="!(newsDetails$ | async)">No news details available yet!</div>
+
+<div>
+  <ul>
+    <li>
+      <strong>New Id :</strong> {{(newsDetails$ |async).id}}
+    </li>
+    <li>
+      <strong>Created By :</strong> {{(newsDetails$ |async).by}}
+    </li>
+    <li>
+      <strong>Title :</strong> {{(newsDetails$ |async).title}}
+    </li>
+    <li>
+      <strong> Type :</strong> {{(newsDetails$ |async).type}}
+    </li>
+    <li>
+      <strong> Url :</strong> {{(newsDetails$ |async).url}}
+    </li>
+  </ul>
+</div>

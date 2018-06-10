@@ -6,6 +6,8 @@
 </div>
 <ul>
   <li *ngFor="let newsId of (newsIds$ | async)">
-    <p>{{newsId}}</p>
+    <p>
+      <a routerLink="/details/{{newsId}}">{{newsId}}</a>
+    </p>
   </li>
 </ul>

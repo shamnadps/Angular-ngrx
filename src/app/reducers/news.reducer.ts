@@ -2,13 +2,13 @@ import { Action } from "@ngrx/store";
 import * as newsActions from "../actions/news.actions";
 import { News } from "../interfaces/news";
 
-export interface State {
+export interface NewsState {
   news: News[];
   loaded: boolean;
   loading: boolean;
 }
 
-export const initialState: State = {
+export const initialState: NewsState = {
   news: [],
   loaded: false,
   loading: false
@@ -17,7 +17,7 @@ export const initialState: State = {
 export function reducer(
   state = initialState,
   action: newsActions.NewsActions
-): State {
+): NewsState {
   switch (action.type) {
     case newsActions.NewsActionTypes.LoadNewsId:
       return {
@@ -44,8 +44,8 @@ export function reducer(
   }
 }
 
-export const getNewsIds = (state: State) => {
+export const getNewsIds = (state: NewsState) => {
   return state.news;
 };
-export const getNewsIdsLoaded = (state: State) => state.loading;
-export const getNewsIdsLoading = (state: State) => state.loaded;
+export const getNewsIdsLoaded = (state: NewsState) => state.loading;
+export const getNewsIdsLoading = (state: NewsState) => state.loaded;

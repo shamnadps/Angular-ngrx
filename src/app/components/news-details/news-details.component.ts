@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { State } from "../reducers";
+import { State } from "../../reducers";
 import { Store } from "@ngrx/store";
-import { NewsDetails } from "../interfaces/news_details";
+import { NewsDetails } from "../../interfaces/news_details";
 
-import * as fromReducers from "../reducers";
-import * as fromActions from "../actions/news.actions";
+import * as fromReducers from "../../reducers";
+import * as fromActions from "../../actions/news.actions";
 
 import { ActivatedRoute } from "@angular/router";
 

@@ -10,11 +10,11 @@ import { EffectsModule } from "@ngrx/effects";
 import { AppEffects } from "./effects/app/app.effects";
 import * as fromNews from "./reducers/news.reducer";
 import { NewsEffects } from "./effects/news/news.effects";
-import { NewsComponent } from "./news/news.component";
+import { NewsComponent } from "./components/news/news.component";
 import { NewsService } from "./services/news.service";
 import { HttpClientModule } from "@angular/common/http";
-import { SidebarComponent } from "./sidebar/sidebar.component";
-import { NewsDetailsComponent } from "./news-details/news-details.component";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { NewsDetailsComponent } from "./components/news-details/news-details.component";
 import { AppRoutingModule } from "./app-routing.module";
 import { NewsDetailEffects } from "./effects/news_details/news.effects";
 

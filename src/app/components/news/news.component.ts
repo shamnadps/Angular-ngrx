@@ -1,11 +1,11 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { News } from "../interfaces/news";
-import { State } from "../reducers";
+import { News } from "../../interfaces/news";
+import { State } from "../../reducers";
 import { Store } from "@ngrx/store";
-import { NewsService } from "../services/news.service";
-import * as fromReducers from "../reducers";
-import * as fromActions from "../actions/news.actions";
+import { NewsService } from "../../services/news.service";
+import * as fromReducers from "../../reducers";
+import * as fromActions from "../../actions/news.actions";
 
 @Component({
   selector: "app-news",

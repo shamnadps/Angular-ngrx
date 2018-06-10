@@ -23,7 +23,8 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([AppEffects]),
     StoreModule.forFeature("news", reducers),
-    EffectsModule.forFeature([NewsEffects])
+    EffectsModule.forFeature([NewsEffects]),
+    environment.production ? [] : StoreDevtoolsModule.instrument()
   ],
   providers: [NewsService],
   bootstrap: [AppComponent]

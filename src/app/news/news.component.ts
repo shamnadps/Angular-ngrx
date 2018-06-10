@@ -5,6 +5,7 @@ import { State } from "../reducers";
 import { Store } from "@ngrx/store";
 import { NewsService } from "../services/news.service";
 import * as fromReducers from "../reducers";
+import * as fromActions from "../actions/news.actions";
 
 @Component({
   selector: "app-news",
@@ -18,5 +19,6 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() {
     this.newsIds$ = this.store.select(fromReducers.getNewsIds);
+    this.store.dispatch(new fromActions.LoadNewsId());
   }
 }

@@ -1,8 +1,11 @@
-<p>
-  news works!</p>
+<h2>News
+</h2>
 
+<div *ngIf="!(newsIds$ | async)?.length">
+  No news available at the moment!.
+</div>
 <ul>
-  <li *ngFor="let news of (newsIds$ | async)">
-    <p>{{news.id}}</p>
+  <li *ngFor="let newsId of (newsIds$ | async)">
+    <p>{{newsId}}</p>
   </li>
 </ul>

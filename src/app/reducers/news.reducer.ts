@@ -9,7 +9,7 @@ export interface State {
 }
 
 export const initialState: State = {
-  news: [{ id: "1" }],
+  news: [],
   loaded: false,
   loading: false
 };

@@ -13,12 +13,10 @@ import * as fromReducers from "../reducers";
   styleUrls: ["./news.component.scss"]
 })
 export class NewsComponent implements OnInit {
-  news$: News[];
+  newsIds$: Observable<News[]>;
   constructor(private store: Store<State>) {}
 
   ngOnInit() {
-    this.store.select(fromReducers.getNewsIds).subscribe(state => {
-      this.news$ = state;
-    });
+    this.newsIds$ = this.store.select(fromReducers.getNewsIds);
   }
 }

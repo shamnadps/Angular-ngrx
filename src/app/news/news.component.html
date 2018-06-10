@@ -2,7 +2,7 @@
   news works!</p>
 
 <ul>
-  <li *ngFor="let obj of news$">
-    <p>{{obj.id}}</p>
+  <li *ngFor="let news of (newsIds$ | async)">
+    <p>{{news.id}}</p>
   </li>
 </ul>

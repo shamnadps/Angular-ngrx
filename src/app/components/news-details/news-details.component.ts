@@ -24,7 +24,7 @@ export class NewsDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.store.dispatch(new fromActions.LoadNewsDetails(this.newsId));
+    this.store.dispatch(new fromActions.LoadNewsDetails());
     this.newsDetails$ = this.store.select(fromReducers.getNewsDetails);
     this.newsDetails$ = this.newsDetails$.pipe(
       map(news =>

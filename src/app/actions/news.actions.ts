@@ -4,16 +4,9 @@ import { NewsDetails } from "../interfaces/news_details";
 
 export enum NewsActionTypes {
   AddNews = "[News] Add News",
-  LoadNewsId = "[News] Load News Id",
-  LoadNewsIdSuccess = "[News] Load News Id Sucess",
-  LoadNewsIdFailed = "[News] Load News Id Failed",
   LoadNewsDetails = "[News] Load News Details",
   LoadNewsDetailsSuccess = "[News] Load News Details Sucess",
   LoadNewsDetailsFailed = "[News] Load News Details Failed"
-}
-
-export class LoadNewsId implements Action {
-  readonly type = NewsActionTypes.LoadNewsId;
 }
 
 export class AddNews implements Action {
@@ -21,18 +14,8 @@ export class AddNews implements Action {
   constructor(public payload: News) {}
 }
 
-export class LoadNewsIdSuccess implements Action {
-  readonly type = NewsActionTypes.LoadNewsIdSuccess;
-  constructor(public payload: {}) {}
-}
-
-export class LoadNewsIdFailed implements Action {
-  readonly type = NewsActionTypes.LoadNewsIdFailed;
-  constructor(public payload: any) {}
-}
 export class LoadNewsDetails implements Action {
   readonly type = NewsActionTypes.LoadNewsDetails;
-  constructor(public payload: any) {}
 }
 
 export class LoadNewsDetailsSuccess implements Action {
@@ -47,7 +30,6 @@ export class LoadNewsDetailsFailed implements Action {
 
 export type NewsActions =
   | AddNews
-  | LoadNewsId
   | LoadNewsDetails
   | LoadNewsDetailsSuccess
   | LoadNewsDetailsFailed;

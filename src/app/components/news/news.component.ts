@@ -50,6 +50,6 @@ export class NewsComponent implements OnInit {
 
   ngOnInit() {
     this.newsIds$ = this.store.select(fromReducers.getNewsDetails);
-    this.store.dispatch(new fromActions.LoadNewsId());
+    this.store.dispatch(new fromActions.LoadNewsDetails());
   }
 }

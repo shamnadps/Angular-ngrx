@@ -16,21 +16,23 @@ export class NewsEffects {
   ) {}
 
   @Effect()
-  effect$ = this.actions$.ofType(newsActions.NewsActionTypes.LoadNewsId).pipe(
-    switchMap(() =>
-      this.httpClient.get(
-        "https://hacker-news.firebaseio.com/v0/topstories.json"
-      )
-    ),
-    map((ids: number[]) => ids.slice(0, 10)),
-    map((ids: number[]) =>
-      ids.map(id =>
-        this.httpClient.get<{ title: string; id: number }>(
-          `https://hacker-news.firebaseio.com/v0/item/${id}.json`
+  effect$ = this.actions$
+    .ofType(newsActions.NewsActionTypes.LoadNewsDetails)
+    .pipe(
+      switchMap(() =>
+        this.httpClient.get(
+          "https://hacker-news.firebaseio.com/v0/topstories.json"
         )
-      )
-    ),
-    switchMap(arr => zip(...arr)),
-    map(result => new newsActions.LoadNewsDetailsSuccess(result))
-  );
+      ),
+      map((ids: number[]) => ids.slice(0, 10)),
+      map((ids: number[]) =>
+        ids.map(id =>
+          this.httpClient.get<{ title: string; id: number }>(
+            `https://hacker-news.firebaseio.com/v0/item/${id}.json`
+          )
+        )
+      ),
+      switchMap(arr => zip(...arr)),
+      map(result => new newsActions.LoadNewsDetailsSuccess(result))
+    );
 }

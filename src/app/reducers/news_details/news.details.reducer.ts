@@ -25,6 +25,19 @@ export function reducer(
         ...state,
         loading: true
       };
+    case newsActions.NewsActionTypes.AddNews:
+      const newItem = {
+        ...action.payload,
+        title: "test",
+        id: 123
+      };
+      const newsList = state.newsDetails.push(newItem);
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        newsDetails: state.newsDetails
+      };
     case newsActions.NewsActionTypes.LoadNewsDetailsFailed:
       return {
         ...state,
@@ -32,7 +45,7 @@ export function reducer(
         loaded: false
       };
     case newsActions.NewsActionTypes.LoadNewsDetailsSuccess:
-      const newsDetails = action.payload;
+      const newsDetails = state.newsDetails.concat(action.payload);
       return {
         ...state,
         loading: false,

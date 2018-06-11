@@ -9,7 +9,6 @@ import { LoadNewsDetails } from "../actions/news.actions";
 @Injectable()
 export class NewsService {
   constructor(private http: HttpClient) {}
-
   getNewsIds(): Observable<News[]> {
     return this.http
       .get<News[]>("https://hacker-news.firebaseio.com/v0/topstories.json")

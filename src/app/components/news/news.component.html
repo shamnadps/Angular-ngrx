@@ -5,9 +5,9 @@
   No news available at the moment!.
 </div>
 <ul [@listStagger]="(newsIds$ | async)">
-  <li *ngFor="let newsId of (newsIds$ | async)">
+  <li *ngFor="let news of (newsIds$ | async)">
     <p>
-      <a routerLink="/details/{{newsId}}">{{newsId}}</a>
+      <a routerLink="/details/{{news.id}}">{{news.id}}</a>
     </p>
   </li>
 </ul>

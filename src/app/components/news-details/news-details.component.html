@@ -3,22 +3,22 @@
 </h2>
 <div *ngIf="!(newsDetails$ | async)">No news details available yet!</div>
 
-<div>
+<div *ngFor="let news of (newsDetails$ | async)">
   <ul>
     <li>
-      <strong>New Id :</strong> {{(newsDetails$ |async).id}}
+      <strong>New Id :</strong> {{news.id}}
     </li>
     <li>
-      <strong>Created By :</strong> {{(newsDetails$ |async).by}}
+      <strong>Created By :</strong> {{news.by}}
     </li>
     <li>
-      <strong>Title :</strong> {{(newsDetails$ |async).title}}
+      <strong>Title :</strong> {{news.title}}
     </li>
     <li>
-      <strong> Type :</strong> {{(newsDetails$ |async).type}}
+      <strong> Type :</strong> {{news.type}}
     </li>
     <li>
-      <strong> Url :</strong> {{(newsDetails$ |async).url}}
+      <strong> Url :</strong> {{news.url}}
     </li>
   </ul>
 </div>

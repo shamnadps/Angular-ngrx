@@ -2,6 +2,7 @@ import {
   ActionReducer,
   ActionReducerMap,
   createFeatureSelector,
+  combineReducers,
   createSelector,
   MetaReducer
 } from "@ngrx/store";
@@ -14,10 +15,12 @@ export interface State {
   newsDetailsState: newsDetailReducers.NewsDetailsState;
 }
 
-export const reducers: ActionReducerMap<State> = {
+export const reducersMap: ActionReducerMap<State> = {
   newsState: newsReducers.reducer,
   newsDetailsState: newsDetailReducers.reducer
 };
+
+export const reducers = combineReducers(reducersMap);
 
 export const getNewsFeatureState = createFeatureSelector("news");
 

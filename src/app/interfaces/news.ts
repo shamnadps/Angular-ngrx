@@ -1,3 +1,1 @@
-export interface News {
-  id: string;
-}
+export interface News {}

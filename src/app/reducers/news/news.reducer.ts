@@ -24,6 +24,7 @@ export function reducer(
         ...state,
         loading: true
       };
+
     case newsActions.NewsActionTypes.LoadNewsIdFailed:
       return {
         ...state,
@@ -31,7 +32,7 @@ export function reducer(
         loaded: false
       };
     case newsActions.NewsActionTypes.LoadNewsIdSuccess:
-      const news = action.payload;
+      const news = state.news.concat(action.payload);
       return {
         ...state,
         loading: false,

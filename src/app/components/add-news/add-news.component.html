@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Hero Form</h1>
+  <div>
+    <div class="form-group" *ngIf="(show)">
+      News Added Successfully!.
+    </div>
+    <form #newsForm="ngForm" (ngSubmit)="addNews(newsForm.form);">
+
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" required ngModel minlength="3" #titleField="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input type="text" class="form-control" id="type" name="type" required ngModel minlength="3" #typeField="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="url">Url</label>
+        <input type="text" class="form-control" id="url" name="url" required ngModel minlength="3" #urlField="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="created">Created By</label>
+        <input type="text" class="form-control" id="created" name="created" required ngModel minlength="3" #createdField="ngModel">
+      </div>
+      <button type="submit" [disabled]="!newsForm.valid" class="btn btn-success">Submit</button>
+    </form>
+  </div>

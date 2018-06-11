@@ -49,7 +49,7 @@ export class NewsComponent implements OnInit {
   constructor(private store: Store<State>) {}
 
   ngOnInit() {
-    this.newsIds$ = this.store.select(fromReducers.getNewsIds);
+    this.newsIds$ = this.store.select(fromReducers.getNewsDetails);
     this.store.dispatch(new fromActions.LoadNewsId());
   }
 }

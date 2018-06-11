@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-
+import { FormsModule } from "@angular/forms";
 import { AppComponent } from "./app.component";
 import { StoreModule } from "@ngrx/store";
 import { reducers } from "./reducers";
@@ -15,18 +15,20 @@ import { HttpClientModule } from "@angular/common/http";
 import { SidebarComponent } from "./components/sidebar/sidebar.component";
 import { NewsDetailsComponent } from "./components/news-details/news-details.component";
 import { AppRoutingModule } from "./app-routing.module";
-import { NewsDetailEffects } from "./effects/news_details/news.effects";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AddNewsComponent } from "./components/add-news/add-news.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NewsComponent,
     SidebarComponent,
-    NewsDetailsComponent
+    NewsDetailsComponent,
+    AddNewsComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
@@ -34,7 +36,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     StoreModule.forFeature("news", reducers),
     StoreModule.forFeature("news-details", reducers),
     EffectsModule.forFeature([NewsEffects]),
-    EffectsModule.forFeature([NewsDetailEffects]),
     environment.production ? [] : StoreDevtoolsModule.instrument(),
     BrowserAnimationsModule
   ],

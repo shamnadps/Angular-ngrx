@@ -9,6 +9,8 @@ import * as fromActions from "../../actions/news.actions";
 
 import { ActivatedRoute } from "@angular/router";
 
+import { map } from "rxjs/operators";
+
 @Component({
   selector: "app-news-details",
   templateUrl: "./news-details.component.html",
@@ -16,13 +18,22 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class NewsDetailsComponent implements OnInit {
   newsDetails$: Observable<NewsDetails[]>;
-  newsId$: number;
+  newsId: number;
   constructor(private store: Store<State>, private route: ActivatedRoute) {
-    this.route.params.subscribe(params => (this.newsId$ = params.id));
+    this.route.params.subscribe(params => (this.newsId = params.id));
   }
 
   ngOnInit() {
+    this.store.dispatch(new fromActions.LoadNewsDetails(this.newsId));
     this.newsDetails$ = this.store.select(fromReducers.getNewsDetails);
-    this.store.dispatch(new fromActions.LoadNewsDetails(this.newsId$));
+    this.newsDetails$ = this.newsDetails$.pipe(
+      map(news =>
+        news.filter(news => {
+          if (this.newsId == news.id) {
+          }
+          return news.id == this.newsId;
+        })
+      )
+    );
   }
 }

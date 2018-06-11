@@ -29,9 +29,10 @@ export function reducer(
       const newItem = {
         ...action.payload,
         title: "test",
-        id: 123
+        id: getRandomId(state.newsDetails)
       };
       const newsList = state.newsDetails.push(newItem);
+
       return {
         ...state,
         loading: false,
@@ -63,3 +64,11 @@ export const getNewsDetails = (state: NewsDetailsState) => {
 };
 export const getNewsDetailsLoaded = (state: NewsDetailsState) => state.loading;
 export const getNewsDetailsLoading = (state: NewsDetailsState) => state.loaded;
+
+export const getRandomId = (news: NewsDetails[]) => {
+  let random = Math.floor(Math.random() * 1000);
+  while (news.find(news => news.id == random)) {
+    random = Math.floor(Math.random() * 1000);
+  }
+  return random;
+};

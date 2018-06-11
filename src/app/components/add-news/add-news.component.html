@@ -20,7 +20,7 @@
       </div>
       <div class="form-group">
         <label for="created">Created By</label>
-        <input type="text" class="form-control" id="created" name="created" required ngModel minlength="3" #createdField="ngModel">
+        <input type="text" class="form-control" id="by" name="by" required ngModel minlength="3" #byField="ngModel">
       </div>
       <button type="submit" [disabled]="!newsForm.valid" class="btn btn-success">Submit</button>
     </form>

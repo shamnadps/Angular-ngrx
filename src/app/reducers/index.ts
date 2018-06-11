@@ -30,14 +30,6 @@ export const getNewsState = createSelector(
 );
 
 export const getNewsIds = createSelector(getNewsState, newsReducers.getNewsIds);
-export const getNewsIdLoaded = createSelector(
-  getNewsState,
-  newsReducers.getNewsIdsLoaded
-);
-export const getNewsIdLoading = createSelector(
-  getNewsState,
-  newsReducers.getNewsIdsLoading
-);
 
 export const getNewsDetailsFeatureState = createFeatureSelector("news-details");
 

@@ -24,22 +24,6 @@ export function reducer(
         ...state,
         loading: true
       };
-
-    case newsActions.NewsActionTypes.LoadNewsIdFailed:
-      return {
-        ...state,
-        loading: false,
-        loaded: false
-      };
-    case newsActions.NewsActionTypes.LoadNewsIdSuccess:
-      const news = state.news.concat(action.payload);
-      return {
-        ...state,
-        loading: false,
-        loaded: true,
-        news
-      };
-
     default:
       return state;
   }
@@ -48,5 +32,3 @@ export function reducer(
 export const getNewsIds = (state: NewsState) => {
   return state.news;
 };
-export const getNewsIdsLoaded = (state: NewsState) => state.loading;
-export const getNewsIdsLoading = (state: NewsState) => state.loaded;

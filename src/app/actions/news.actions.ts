@@ -48,8 +48,6 @@ export class LoadNewsDetailsFailed implements Action {
 export type NewsActions =
   | AddNews
   | LoadNewsId
-  | LoadNewsIdSuccess
-  | LoadNewsIdFailed
   | LoadNewsDetails
   | LoadNewsDetailsSuccess
   | LoadNewsDetailsFailed;

@@ -4,6 +4,15 @@
 <div *ngIf="!(newsDetails$ | async)">No news details available yet!</div>
 
 <div *ngFor="let news of (newsDetails$ | async)">
+
+  <div class="icon-row">
+    <span>
+      <i class="material-icons icons" (click)="editNews();">edit</i>
+    </span>
+    <span>
+      <i class="material-icons icons" (click)="deleteNews();">delete</i>
+    </span>
+  </div>
   <ul>
     <li>
       <strong>New Id :</strong> {{news.id}}

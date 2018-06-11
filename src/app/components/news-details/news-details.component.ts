@@ -36,4 +36,11 @@ export class NewsDetailsComponent implements OnInit {
       )
     );
   }
+
+  editNews() {
+    console.log("edit news");
+  }
+  deleteNews() {
+    console.log("delete news");
+  }
 }

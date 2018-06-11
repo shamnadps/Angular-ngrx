@@ -28,7 +28,6 @@ export function reducer(
     case newsActions.NewsActionTypes.AddNews:
       const newItem = {
         ...action.payload,
-        title: "test",
         id: getRandomId(state.newsDetails)
       };
       const newsList = state.newsDetails.push(newItem);

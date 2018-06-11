@@ -30,7 +30,7 @@ export function reducer(
         ...action.payload,
         id: getRandomId(state.newsDetails)
       };
-      const newsList = state.newsDetails.push(newItem);
+      const newsList = state.newsDetails.unshift(newItem);
 
       return {
         ...state,

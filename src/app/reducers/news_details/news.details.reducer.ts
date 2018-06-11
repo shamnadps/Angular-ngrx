@@ -36,7 +36,6 @@ export function reducer(
       return {
         ...state,
         loading: false,
-        loaded: true,
         newsDetails: state.newsDetails
       };
     case newsActions.NewsActionTypes.LoadNewsDetailsFailed:
@@ -46,7 +45,10 @@ export function reducer(
         loaded: false
       };
     case newsActions.NewsActionTypes.LoadNewsDetailsSuccess:
-      const newsDetails = state.newsDetails.concat(action.payload);
+      let newsDetails = state.newsDetails;
+      if (!state.loaded) {
+        newsDetails = state.newsDetails.concat(action.payload);
+      }
       return {
         ...state,
         loading: false,

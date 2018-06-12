@@ -2,6 +2,9 @@
   News Details
 </h2>
 <div *ngIf="!(newsDetails$ | async)">No news details available yet!</div>
+<div class="form-group alert alert-success" *ngIf="(deleted)">
+  News Deleted Successfully!.
+</div>
 <div *ngIf="(!showedit)">
 
   <div *ngFor="let news of (newsDetails$ | async)">
@@ -39,7 +42,7 @@
 </div>
 <div *ngIf="(showedit)">
   <div *ngFor="let news of (newsDetails$ | async)">
-    <form #updateForm="ngForm" (ngSubmit)="updateNews(updateForm.form, news.id);">
+    <form #updateForm="ngForm" (ngSubmit)="updateNews(updateForm.form);">
 
       <div class="form-group">
         <label for="newsId">Id:</label>

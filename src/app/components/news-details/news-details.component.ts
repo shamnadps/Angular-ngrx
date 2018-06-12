@@ -21,6 +21,7 @@ export class NewsDetailsComponent implements OnInit {
   newsId: number;
   showedit = false;
   updated = false;
+  deleted = false;
   constructor(private store: Store<State>, private route: ActivatedRoute) {
     this.route.params.subscribe(params => (this.newsId = params.id));
   }
@@ -43,11 +44,13 @@ export class NewsDetailsComponent implements OnInit {
     this.showedit = true;
   }
   deleteNews() {
-    console.log("delete news");
+    this.store.dispatch(new fromActions.DeleteNews(this.newsId));
+    this.showedit = false;
+    this.updated = false;
+    this.deleted = true;
   }
-
-  updateNews(form, id) {
-    form.value.id = id;
+  updateNews(form) {
+    form.value.id = this.newsId;
     this.store.dispatch(new fromActions.UpdateNews(form.value));
     this.showedit = false;
     this.updated = true;

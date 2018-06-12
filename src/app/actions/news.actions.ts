@@ -5,6 +5,7 @@ import { NewsDetails } from "../interfaces/news_details";
 export enum NewsActionTypes {
   AddNews = "[News] Add News",
   UpdateNews = "[News] Update News",
+  DeleteNews = "[News] Delete News",
   LoadNewsDetails = "[News] Load News Details",
   LoadNewsDetailsSuccess = "[News] Load News Details Sucess",
   LoadNewsDetailsFailed = "[News] Load News Details Failed"
@@ -18,6 +19,11 @@ export class AddNews implements Action {
 export class UpdateNews implements Action {
   readonly type = NewsActionTypes.UpdateNews;
   constructor(public payload: NewsDetails) {}
+}
+
+export class DeleteNews implements Action {
+  readonly type = NewsActionTypes.DeleteNews;
+  constructor(public payload: number) {}
 }
 
 export class LoadNewsDetails implements Action {
@@ -37,6 +43,7 @@ export class LoadNewsDetailsFailed implements Action {
 export type NewsActions =
   | AddNews
   | UpdateNews
+  | DeleteNews
   | LoadNewsDetails
   | LoadNewsDetailsSuccess
   | LoadNewsDetailsFailed;

@@ -55,6 +55,16 @@ export function reducer(
         loading: false,
         newsDetails: updatedList
       };
+
+    case newsActions.NewsActionTypes.DeleteNews:
+      const deleteId = action.payload;
+      const updatedNews = state.newsDetails.filter(news => news.id != deleteId);
+
+      return {
+        ...state,
+        loading: false,
+        newsDetails: updatedNews
+      };
     case newsActions.NewsActionTypes.LoadNewsDetailsFailed:
       return {
         ...state,

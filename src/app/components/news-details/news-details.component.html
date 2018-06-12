@@ -2,32 +2,66 @@
   News Details
 </h2>
 <div *ngIf="!(newsDetails$ | async)">No news details available yet!</div>
+<div *ngIf="(!showedit)">
 
-<div *ngFor="let news of (newsDetails$ | async)">
+  <div *ngFor="let news of (newsDetails$ | async)">
 
-  <div class="icon-row">
-    <span>
-      <i class="material-icons icons" (click)="editNews();">edit</i>
-    </span>
-    <span>
-      <i class="material-icons icons" (click)="deleteNews();">delete</i>
-    </span>
+    <div class="icon-row">
+      <span>
+        <i class="material-icons icons" (click)="editNews();">edit</i>
+      </span>
+      <span>
+        <i class="material-icons icons" (click)="deleteNews();">delete</i>
+      </span>
+    </div>
+    <ul>
+      <li>
+        <strong>New Id :</strong> {{news.id}}
+      </li>
+
+      <li>
+        <strong>Title :</strong> {{news.title}}
+      </li>
+      <li>
+        <strong> Type :</strong> {{news.type}}
+      </li>
+      <li>
+        <strong> Url :</strong> {{news.url}}
+      </li>
+      <li>
+        <strong>Created By :</strong> {{news.by}}
+      </li>
+    </ul>
   </div>
-  <ul>
-    <li>
-      <strong>New Id :</strong> {{news.id}}
-    </li>
-    <li>
-      <strong>Created By :</strong> {{news.by}}
-    </li>
-    <li>
-      <strong>Title :</strong> {{news.title}}
-    </li>
-    <li>
-      <strong> Type :</strong> {{news.type}}
-    </li>
-    <li>
-      <strong> Url :</strong> {{news.url}}
-    </li>
-  </ul>
+  <div class="form-group alert alert-success" *ngIf="(updated)">
+    News Updated Successfully!.
+  </div>
+</div>
+<div *ngIf="(showedit)">
+  <div *ngFor="let news of (newsDetails$ | async)">
+    <form #updateForm="ngForm" (ngSubmit)="updateNews(updateForm.form, news.id);">
+
+      <div class="form-group">
+        <label for="newsId">Id:</label>
+        <input type="text" class="form-control" id="newsId" name="newsId" required disabled ngModel="{{news.id}}" #newsIdField="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" required ngModel="{{news.title}}" minlength="3" #titleField="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input type="text" class="form-control" id="type" name="type" required ngModel="{{news.type}}" minlength="3" #typeField="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="url">Url</label>
+        <input type="text" class="form-control" id="url" name="url" required ngModel="{{news.url}}" minlength="3" #urlField="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="created">Created By</label>
+        <input type="text" class="form-control" id="by" name="by" required ngModel="{{news.by}}" minlength="3" #byField="ngModel">
+      </div>
+      <button type="submit" [disabled]="!updateForm.valid" class="btn btn-success">Update</button>
+    </form>
+  </div>
 </div>

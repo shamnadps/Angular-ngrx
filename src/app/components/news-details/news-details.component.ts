@@ -19,6 +19,8 @@ import { map } from "rxjs/operators";
 export class NewsDetailsComponent implements OnInit {
   newsDetails$: Observable<NewsDetails[]>;
   newsId: number;
+  showedit = false;
+  updated = false;
   constructor(private store: Store<State>, private route: ActivatedRoute) {
     this.route.params.subscribe(params => (this.newsId = params.id));
   }
@@ -38,9 +40,16 @@ export class NewsDetailsComponent implements OnInit {
   }
 
   editNews() {
-    console.log("edit news");
+    this.showedit = true;
   }
   deleteNews() {
     console.log("delete news");
+  }
+
+  updateNews(form, id) {
+    form.value.id = id;
+    this.store.dispatch(new fromActions.UpdateNews(form.value));
+    this.showedit = false;
+    this.updated = true;
   }
 }

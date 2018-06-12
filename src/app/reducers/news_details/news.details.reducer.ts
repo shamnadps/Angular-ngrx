@@ -37,6 +37,24 @@ export function reducer(
         loading: false,
         newsDetails: state.newsDetails
       };
+
+    case newsActions.NewsActionTypes.UpdateNews:
+      const toUpdate = {
+        ...action.payload
+      };
+      const updatedList = state.newsDetails.map(news => {
+        if (news.id == toUpdate.id) {
+          return toUpdate;
+        } else {
+          return news;
+        }
+      });
+
+      return {
+        ...state,
+        loading: false,
+        newsDetails: updatedList
+      };
     case newsActions.NewsActionTypes.LoadNewsDetailsFailed:
       return {
         ...state,

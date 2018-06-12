@@ -5,6 +5,30 @@
 <div class="form-group alert alert-success" *ngIf="(deleted)">
   News Deleted Successfully!.
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirmation Required</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete the news?.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" data-dismiss="modal" (click)="deleteNews();">Yes</button>
+        <button (click)="showDialog = !showDialog" data-dismiss="modal" class="btn btn-warning">No</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 <div *ngIf="(!showedit)">
 
   <div *ngFor="let news of (newsDetails$ | async)">
@@ -14,7 +38,7 @@
         <i class="material-icons icons" (click)="editNews();">edit</i>
       </span>
       <span>
-        <i class="material-icons icons" (click)="deleteNews();">delete</i>
+        <i class="material-icons icons" data-toggle="modal" data-target="#myModal">delete</i>
       </span>
     </div>
     <ul>
